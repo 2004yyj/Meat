@@ -8,8 +8,9 @@ import com.example.meat.domain.model.Category
 import com.example.meat.domain.model.Product
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
 
-class ListDataSourceImpl(
+class ListDataSourceImpl @Inject constructor(
     private val service: ListService
 ): ListDataSource, BaseRemote() {
     override fun getCategory(): Flow<List<Category>> = flow {

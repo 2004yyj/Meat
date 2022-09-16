@@ -43,4 +43,7 @@ dependencies {
     //coroutines
     implementation(Dependencies.Coroutines.core)
     implementation(Dependencies.Coroutines.test)
+
+    //hilt
+    implementation(Dependencies.DaggerHilt.compiler)
 }

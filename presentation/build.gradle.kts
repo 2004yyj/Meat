@@ -65,7 +65,7 @@ dependencies {
     //navigation
     implementation(Dependencies.Androidx.navigation)
 
-    //Hilt
+    //hilt
     implementation(Dependencies.DaggerHilt.android)
     implementation(Dependencies.DaggerHilt.compiler)
 

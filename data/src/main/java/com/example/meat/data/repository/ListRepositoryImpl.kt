@@ -5,8 +5,9 @@ import com.example.meat.domain.model.Category
 import com.example.meat.domain.model.Product
 import com.example.meat.domain.repository.ListRepository
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
-class ListRepositoryImpl(
+class ListRepositoryImpl @Inject constructor(
     private val dataSource: ListDataSource
 ): ListRepository {
     override fun getCategory(): Flow<List<Category>> {
