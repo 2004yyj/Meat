@@ -15,7 +15,7 @@ object NetworkModule {
     @Singleton
     fun providesRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://android-test.yookgak.com/products")
+            .baseUrl("https://android-test.yookgak.com/products/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
