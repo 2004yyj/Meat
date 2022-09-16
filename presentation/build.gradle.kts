@@ -73,6 +73,10 @@ dependencies {
     implementation(Dependencies.Coroutines.core)
     implementation(Dependencies.Coroutines.test)
 
+    //retrofit
+    implementation(Dependencies.Network.retrofit)
+    implementation(Dependencies.Network.gsonConverter)
+
     testImplementation(Dependencies.Test.junit)
     androidTestImplementation(Dependencies.Test.androidJunit)
     androidTestImplementation(Dependencies.Test.espresso)
