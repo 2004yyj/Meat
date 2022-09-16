@@ -39,7 +39,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = Dependencies.Version.compose
+        kotlinCompilerExtensionVersion = "1.3.1"
     }
     packagingOptions {
         resources {
@@ -58,11 +58,15 @@ dependencies {
     implementation (Dependencies.Androidx.composeActivity)
     implementation(Dependencies.Androidx.composeUiToolingPreview)
     implementation(Dependencies.Androidx.lifecycle)
+    implementation(Dependencies.Androidx.lifecycleViewModel)
+
+    //navigation
     implementation(Dependencies.Androidx.navigation)
+
     testImplementation(Dependencies.Test.junit)
     androidTestImplementation(Dependencies.Test.androidJunit)
     androidTestImplementation(Dependencies.Test.espresso)
-    androidTestImplementation(Dependencies.Test.composeJunit)
+    androidTestImplementation(Dependencies.Test.composeUiJunit)
     debugImplementation(Dependencies.Test.composeUiTooling)
     debugImplementation(Dependencies.Test.composeUiTest)
 }
