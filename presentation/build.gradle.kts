@@ -58,6 +58,7 @@ dependencies {
     implementation (Dependencies.Androidx.composeActivity)
     implementation(Dependencies.Androidx.composeUiToolingPreview)
     implementation(Dependencies.Androidx.lifecycle)
+    implementation(Dependencies.Androidx.navigation)
     testImplementation(Dependencies.Test.junit)
     androidTestImplementation(Dependencies.Test.androidJunit)
     androidTestImplementation(Dependencies.Test.espresso)

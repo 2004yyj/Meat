@@ -7,9 +7,11 @@ object Dependencies {
         const val junit = "4.13.2"
         const val androidJunit = "1.1.3"
         const val espresso = "3.4.0"
+        const val navigation = "2.5.0"
     }
 
     object Androidx {
+        const val navigation = "androidx.navigation:navigation-compose:${Version.navigation}"
         const val core = "androidx.core:core-ktx:${Version.core}"
         const val composeUi = "androidx.compose.ui:ui:${Version.compose}"
         const val composeMaterial = "androidx.compose.material:material:${Version.compose}"
