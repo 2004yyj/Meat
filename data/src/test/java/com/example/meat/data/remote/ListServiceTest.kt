@@ -3,6 +3,7 @@ package com.example.meat.data.remote
 import com.example.meat.data.entity.CategoryData
 import com.example.meat.data.entity.ListData
 import com.example.meat.data.entity.ProductData
+import com.example.meat.data.remote.service.ListService
 import junit.framework.Assert.assertEquals
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest

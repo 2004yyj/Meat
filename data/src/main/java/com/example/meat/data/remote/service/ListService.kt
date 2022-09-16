@@ -1,4 +1,4 @@
-package com.example.meat.data.remote
+package com.example.meat.data.remote.service
 
 import com.example.meat.data.entity.ListData
 import retrofit2.Response
