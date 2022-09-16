@@ -7,18 +7,12 @@ import androidx.compose.material.ScrollableTabRow
 import androidx.compose.material.Tab
 import androidx.compose.material.TabRowDefaults
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.meat.screen.home.list.category.ProductByKey
-import com.google.accompanist.pager.ExperimentalPagerApi
-import com.google.accompanist.pager.HorizontalPager
-import com.google.accompanist.pager.pagerTabIndicatorOffset
-import com.google.accompanist.pager.rememberPagerState
+import com.example.meat.screen.home.list.category.ProductByCategory
+import com.google.accompanist.pager.*
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalPagerApi::class)
@@ -27,12 +21,15 @@ fun Product(
     viewModel: ProductViewModel = hiltViewModel()
 ) {
     viewModel.getCategory()
+    viewModel.getProduct()
+
     val coroutineScope = rememberCoroutineScope()
     val category by viewModel.category.collectAsState()
+    val product by viewModel.product.collectAsState()
+    val pagerState = rememberPagerState()
 
-    Column(modifier = Modifier.fillMaxSize()) {
-        val pagerState = rememberPagerState()
-        if (category.isNotEmpty()) {
+    if (category.isNotEmpty()) {
+        Column(modifier = Modifier.fillMaxSize()) {
             ScrollableTabRow(
                 edgePadding = 0.dp,
                 modifier = Modifier.fillMaxWidth(),
@@ -58,9 +55,9 @@ fun Product(
 
             HorizontalPager(
                 count = category.size,
-                state = pagerState,
+                state = pagerState
             ) { page ->
-                ProductByKey(categoryKey = category[page].key)
+                ProductByCategory(product = product[page])
             }
         }
     }
