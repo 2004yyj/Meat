@@ -25,7 +25,31 @@ fun App(
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colors.background
         ) {
+            NavHost(
+                navController = appState.navController,
+                startDestination = Screen.Home.route
+            ) {
+                composable(
+                    route = Screen.Home.route
+                ) { navBackStackEntry ->
+                    Home(
+                        navigateToDetail = {
+                            appState.replaceToDetail(it, navBackStackEntry)
+                        }
+                    )
+                }
 
+                composable(
+                    route = Screen.Detail.route,
+                    arguments = listOf(
+                        navArgument("name") {
+                            type = NavType.StringType
+                        }
+                    )
+                ) {
+                    Detail()
+                }
+            }
         }
     }
 }
