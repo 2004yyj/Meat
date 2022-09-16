@@ -1,5 +1,6 @@
 object Dependencies {
     object Version {
+        const val hiltViewModel = "1.0.0"
         const val mockWebServer = "4.10.0"
         const val hilt = "2.43.2"
         const val core = "1.7.0"
@@ -55,5 +56,6 @@ object Dependencies {
     object DaggerHilt {
         const val compiler = "com.google.dagger:hilt-compiler:${Version.hilt}"
         const val android = "com.google.dagger:hilt-android:${Version.hilt}"
+        const val hiltViewModel = "androidx.hilt:hilt-navigation-compose:${Version.hiltViewModel}"
     }
 }

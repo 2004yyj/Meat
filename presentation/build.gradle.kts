@@ -68,6 +68,7 @@ dependencies {
     //hilt
     implementation(Dependencies.DaggerHilt.android)
     implementation(Dependencies.DaggerHilt.compiler)
+    implementation(Dependencies.DaggerHilt.hiltViewModel)
 
     //coroutines
     implementation(Dependencies.Coroutines.core)
