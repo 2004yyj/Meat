@@ -43,44 +43,47 @@ class ListDataSourceTest {
 
     @Test
     fun 카테고리별_상품_가져오기() = runTest {
-        val expected = listOf(
-            Product(
-                "pork01",
-                "pork",
-                "삼겹살",
-                19800,
-                "https://android-test.yookgak.com/static/JeongyookgakLogo.png",
-                0
-            ),
+        val expected =
+            listOf(
+                listOf(
+                    Product(
+                        "pork01",
+                        "pork",
+                        "삼겹살",
+                        19800,
+                        "https://android-test.yookgak.com/static/JeongyookgakLogo.png",
+                        0
+                    ),
 
-            Product(
-                "pork02",
-                "pork",
-                "목살",
-                18600,
-                "https://android-test.yookgak.com/static/JeongyookgakLogo.png",
-                1
-            ),
-            Product(
-                "pork03",
-                "pork",
-                "항정살",
-                19800,
-                "https://android-test.yookgak.com/static/JeongyookgakLogo.png",
-                2
-            ),
-            Product(
-                "pork04",
-                "pork",
-                "등갈비",
-                19800,
-                "https://android-test.yookgak.com/static/JeongyookgakLogo.png",
-                3
+                    Product(
+                        "pork02",
+                        "pork",
+                        "목살",
+                        18600,
+                        "https://android-test.yookgak.com/static/JeongyookgakLogo.png",
+                        1
+                    ),
+                    Product(
+                        "pork03",
+                        "pork",
+                        "항정살",
+                        19800,
+                        "https://android-test.yookgak.com/static/JeongyookgakLogo.png",
+                        2
+                    ),
+                    Product(
+                        "pork04",
+                        "pork",
+                        "등갈비",
+                        19800,
+                        "https://android-test.yookgak.com/static/JeongyookgakLogo.png",
+                        3
+                    )
+                )
             )
-        )
-        var actual: List<Product>? = null
+        var actual: List<List<Product>>? = null
         val testJob = launch(UnconfinedTestDispatcher()) {
-            listDataSource.getProductByCategory("pork").collect {
+            listDataSource.getProduct().collect {
                 actual = it
             }
         }

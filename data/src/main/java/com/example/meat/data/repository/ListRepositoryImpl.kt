@@ -14,7 +14,7 @@ class ListRepositoryImpl @Inject constructor(
         return dataSource.getCategory()
     }
 
-    override fun getProductByCategory(categoryKey: String): Flow<List<Product>> {
-        return dataSource.getProductByCategory(categoryKey)
+    override fun getProduct(): Flow<List<List<Product>>> {
+        return dataSource.getProduct()
     }
 }

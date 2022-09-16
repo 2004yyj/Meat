@@ -17,8 +17,17 @@ class ListDataSourceImpl @Inject constructor(
         emit(getResponse(service.getList()).toModel().categories)
     }
 
-    override fun getProductByCategory(categoryKey: String): Flow<List<Product>> = flow {
+    override fun getProduct(): Flow<List<List<Product>>> = flow {
         val list = getResponse(service.getList()).toModel()
-        emit(list.productions.filter { it.categoryKey == categoryKey })
+        val sortedAndGroupedList =
+            list.productions.sortedBy {
+                // 카테고리 Order별로 Sort
+                list.categories.find { category -> category.key == it.categoryKey }?.order
+            }.groupBy {
+                // 카테고리 Key별로 Grouping
+                it.categoryKey
+            }.values.toList()
+            // Key 빼고 value collection 받아와서 List로 변경
+        emit(sortedAndGroupedList)
     }
 }
