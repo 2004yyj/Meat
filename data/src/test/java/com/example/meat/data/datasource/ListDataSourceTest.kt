@@ -1,9 +1,9 @@
 package com.example.meat.data.datasource
 
 import com.example.meat.data.datasource.fake.FakeListService
-import com.example.meat.data.entity.CategoryData
-import com.example.meat.data.entity.ListData
-import com.example.meat.data.entity.ProductData
+import com.example.meat.domain.model.Category
+import com.example.meat.domain.model.ListModel
+import com.example.meat.domain.model.Product
 import com.example.meat.data.remote.datasource.ListDataSourceImpl
 import com.example.meat.data.remote.service.ListService
 import junit.framework.Assert.assertEquals
@@ -27,14 +27,14 @@ class ListDataSourceTest {
     @OptIn(ExperimentalCoroutinesApi::class)
     @Test
     fun 리스트_가져오기() = runTest {
-        val expected = ListData(
+        val expected = ListModel(
             categories = listOf(
-                CategoryData("pork", "돼지", 0),
-                CategoryData("beef", "소", 1),
-                CategoryData("chicken", "닭", 2)
+                Category("pork", "돼지", 0),
+                Category("beef", "소", 1),
+                Category("chicken", "닭", 2)
             ),
             productions = listOf(
-                ProductData(
+                Product(
                     "pork01",
                     "pork",
                     "삼겹살",
@@ -43,7 +43,7 @@ class ListDataSourceTest {
                     0
                 ),
 
-                ProductData(
+                Product(
                     "pork02",
                     "pork",
                     "목살",
@@ -51,7 +51,7 @@ class ListDataSourceTest {
                     "https://android-test.yookgak.com/static/JeongyookgakLogo.png",
                     1
                 ),
-                ProductData(
+                Product(
                     "pork03",
                     "pork",
                     "항정살",
@@ -59,7 +59,7 @@ class ListDataSourceTest {
                     "https://android-test.yookgak.com/static/JeongyookgakLogo.png",
                     2
                 ),
-                ProductData(
+                Product(
                     "pork04",
                     "pork",
                     "등갈비",
@@ -69,7 +69,7 @@ class ListDataSourceTest {
                 )
             )
         )
-        var actual: ListData? = null
+        var actual: ListModel? = null
         val testJob = launch(UnconfinedTestDispatcher()) {
             listDataSource.getList().collect {
                 actual = it
