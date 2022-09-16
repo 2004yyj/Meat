@@ -1,5 +1,6 @@
 object Dependencies {
     object Version {
+        const val mockWebServer = "4.10.0"
         const val hilt = "2.43.2"
         const val core = "1.7.0"
         const val compose = "1.2.1"
@@ -28,6 +29,7 @@ object Dependencies {
     object Network {
         const val retrofit = "com.squareup.retrofit2:retrofit:${Version.retrofit}"
         const val gsonConverter = "com.squareup.retrofit2:converter-gson:${Version.retrofit}"
+        const val mockWebServer =  "com.squareup.okhttp3:mockwebserver:${Version.mockWebServer}"
     }
 
     object Coroutines {

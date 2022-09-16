@@ -38,6 +38,7 @@ dependencies {
     //retrofit
     implementation(Dependencies.Network.retrofit)
     implementation(Dependencies.Network.gsonConverter)
+    implementation(Dependencies.Network.mockWebServer)
 
     //coroutines
     implementation(Dependencies.Coroutines.core)
