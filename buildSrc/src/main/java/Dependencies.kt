@@ -1,5 +1,6 @@
 object Dependencies {
     object Version {
+        const val coil = "2.2.1"
         const val pager = "0.26.3-beta"
         const val hiltViewModel = "1.0.0"
         const val mockWebServer = "4.10.0"
@@ -62,5 +63,9 @@ object Dependencies {
     object Accompanist {
         const val pager = "com.google.accompanist:accompanist-pager:${Version.pager}"
         const val pagerIndicator = "com.google.accompanist:accompanist-pager-indicators:${Version.pager}"
+    }
+
+    object Image {
+        const val coil = "io.coil-kt:coil-compose:${Version.coil}"
     }
 }

@@ -84,6 +84,9 @@ dependencies {
     implementation(Dependencies.Accompanist.pager)
     implementation(Dependencies.Accompanist.pagerIndicator)
 
+    //coil
+    implementation(Dependencies.Image.coil)
+
     testImplementation(Dependencies.Test.junit)
     androidTestImplementation(Dependencies.Test.androidJunit)
     androidTestImplementation(Dependencies.Test.espresso)
