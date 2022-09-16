@@ -32,7 +32,7 @@ class ListServiceTest {
 
     @Test
     fun 리스트_가져오기() = runTest {
-        val jsonFile = File("src/test/java/com/example/meat/data/resource/list.json").readText()
+        val jsonFile = File("src/test/java/com/example/meat/data/remote/resource/list.json").readText()
         val response = MockResponse().setBody(jsonFile)
         mockWebServer.enqueue(response)
 
