@@ -1,5 +1,6 @@
 object Dependencies {
     object Version {
+        const val pager = "0.26.3-beta"
         const val hiltViewModel = "1.0.0"
         const val mockWebServer = "4.10.0"
         const val hilt = "2.43.2"
@@ -57,5 +58,10 @@ object Dependencies {
         const val compiler = "com.google.dagger:hilt-compiler:${Version.hilt}"
         const val android = "com.google.dagger:hilt-android:${Version.hilt}"
         const val hiltViewModel = "androidx.hilt:hilt-navigation-compose:${Version.hiltViewModel}"
+    }
+
+    object Accompanist {
+        const val pager = "com.google.accompanist:accompanist-pager:${Version.pager}"
+        const val pagerIndicator = "com.google.accompanist:accompanist-pager-indicators:${Version.pager}"
     }
 }

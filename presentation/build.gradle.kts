@@ -80,6 +80,10 @@ dependencies {
     implementation(Dependencies.Network.retrofit)
     implementation(Dependencies.Network.gsonConverter)
 
+    //accompanist
+    implementation(Dependencies.Accompanist.pager)
+    implementation(Dependencies.Accompanist.pagerIndicator)
+
     testImplementation(Dependencies.Test.junit)
     androidTestImplementation(Dependencies.Test.androidJunit)
     androidTestImplementation(Dependencies.Test.espresso)
