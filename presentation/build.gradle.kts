@@ -1,4 +1,6 @@
 plugins {
+    id ("kotlin-kapt")
+    id ("kotlin-android")
     id ("com.android.application")
     id ("org.jetbrains.kotlin.android")
     id ("com.google.dagger.hilt.android")
@@ -67,7 +69,7 @@ dependencies {
 
     //hilt
     implementation(Dependencies.DaggerHilt.android)
-    implementation(Dependencies.DaggerHilt.compiler)
+    kapt(Dependencies.DaggerHilt.compiler)
     implementation(Dependencies.DaggerHilt.hiltViewModel)
 
     //coroutines
