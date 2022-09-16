@@ -1,6 +1,7 @@
 plugins {
     id ("com.android.application")
     id ("org.jetbrains.kotlin.android")
+    id ("com.google.dagger.hilt.android")
 }
 
 android {
@@ -62,6 +63,10 @@ dependencies {
 
     //navigation
     implementation(Dependencies.Androidx.navigation)
+
+    //Hilt
+    implementation(Dependencies.DaggerHilt.android)
+    implementation(Dependencies.DaggerHilt.compiler)
 
     testImplementation(Dependencies.Test.junit)
     androidTestImplementation(Dependencies.Test.androidJunit)

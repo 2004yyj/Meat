@@ -1,5 +1,6 @@
 object Dependencies {
     object Version {
+        const val hilt = "2.43.2"
         const val core = "1.7.0"
         const val compose = "1.2.1"
         const val composeUi = "1.2.1"
@@ -35,5 +36,10 @@ object Dependencies {
         const val data = ":data"
         const val domain = ":domain"
         const val presentation = ":presentation"
+    }
+
+    object DaggerHilt {
+        const val compiler = "com.google.dagger:hilt-compiler:${Version.hilt}"
+        const val android = "com.google.dagger:hilt-android:${Version.hilt}"
     }
 }
