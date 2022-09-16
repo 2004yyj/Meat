@@ -1,4 +1,4 @@
-package com.example.meat.screen.home.list.key
+package com.example.meat.screen.home.list.category
 
 import androidx.compose.runtime.Composable
 import com.example.meat.screen.home.list.ProductViewModel
