@@ -4,9 +4,9 @@ import com.example.meat.domain.model.Product
 import com.example.meat.domain.repository.ListRepository
 import kotlinx.coroutines.flow.Flow
 
-class GetProductUseCase(
+class GetProductWithCategoryUseCase(
     private val listRepository: ListRepository
 ) {
-    operator fun invoke(): Flow<List<List<Product>>> =
-        listRepository.getProduct()
+    operator fun invoke(): Flow<Map<String, List<Product>>> =
+        listRepository.getProductWithCategory()
 }

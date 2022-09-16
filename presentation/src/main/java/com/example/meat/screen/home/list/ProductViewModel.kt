@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.meat.domain.model.Category
 import com.example.meat.domain.model.Product
 import com.example.meat.domain.usecase.list.GetCategoryUseCase
-import com.example.meat.domain.usecase.list.GetProductUseCase
+import com.example.meat.domain.usecase.list.GetProductWithCategoryUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -15,12 +15,12 @@ import javax.inject.Inject
 @HiltViewModel
 class ProductViewModel @Inject constructor(
     private val getCategoryUseCase: GetCategoryUseCase,
-    private val getProductByCategoryUseCase: GetProductUseCase
+    private val getProductWithCategoryUseCase: GetProductWithCategoryUseCase
 ): ViewModel() {
     private val _category = MutableStateFlow(emptyList<Category>())
     val category = _category.asStateFlow()
 
-    private val _product: MutableStateFlow<List<List<Product>>> = MutableStateFlow(emptyList())
+    private val _product: MutableStateFlow<Map<String, List<Product>>> = MutableStateFlow(emptyMap())
     val product = _product.asStateFlow()
 
     fun getCategory() {
@@ -34,7 +34,7 @@ class ProductViewModel @Inject constructor(
 
     fun getProduct() {
         viewModelScope.launch {
-            getProductByCategoryUseCase().collect {
+            getProductWithCategoryUseCase().collect {
                 _product.emit(it)
             }
         }

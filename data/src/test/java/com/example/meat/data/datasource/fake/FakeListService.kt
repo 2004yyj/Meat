@@ -1,12 +1,9 @@
 package com.example.meat.data.datasource.fake
 
-import com.example.meat.data.datasource.ListDataSource
 import com.example.meat.data.entity.CategoryData
 import com.example.meat.data.entity.ListData
 import com.example.meat.data.entity.ProductData
 import com.example.meat.data.remote.service.ListService
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 import retrofit2.Response
 
 class FakeListService : ListService {

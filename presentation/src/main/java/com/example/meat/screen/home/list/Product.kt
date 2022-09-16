@@ -24,11 +24,11 @@ fun Product(
     viewModel.getProduct()
 
     val coroutineScope = rememberCoroutineScope()
-    val category by viewModel.category.collectAsState()
-    val product by viewModel.product.collectAsState()
+    val categories by viewModel.category.collectAsState()
+    val products by viewModel.product.collectAsState()
     val pagerState = rememberPagerState()
 
-    if (category.isNotEmpty()) {
+    if (categories.isNotEmpty() && products.isNotEmpty()) {
         Column(modifier = Modifier.fillMaxSize()) {
             ScrollableTabRow(
                 edgePadding = 0.dp,
@@ -40,9 +40,9 @@ fun Product(
                     )
                 }
             ) {
-                category.forEachIndexed { index, title ->
+                categories.forEachIndexed { index, category ->
                     Tab(
-                        text = { Text(text = title.name) },
+                        text = { Text(text = category.name) },
                         selected = pagerState.currentPage == index,
                         onClick = {
                             coroutineScope.launch {
@@ -54,10 +54,12 @@ fun Product(
             }
 
             HorizontalPager(
-                count = category.size,
+                count = categories.size,
                 state = pagerState
             ) { page ->
-                ProductByCategory(product = product[page])
+                products[categories[page].key]?.let {
+                    ProductByCategory(product = it)
+                }
             }
         }
     }

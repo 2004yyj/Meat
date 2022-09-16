@@ -17,7 +17,7 @@ class ListDataSourceImpl @Inject constructor(
         emit(getResponse(service.getList()).toModel().categories)
     }
 
-    override fun getProduct(): Flow<List<List<Product>>> = flow {
+    override fun getProductWithCategory(): Flow<Map<String, List<Product>>> = flow {
         val list = getResponse(service.getList()).toModel()
         val sortedAndGroupedList =
             list.productions.sortedBy {
@@ -26,8 +26,7 @@ class ListDataSourceImpl @Inject constructor(
             }.groupBy {
                 // 카테고리 Key별로 Grouping
                 it.categoryKey
-            }.values.toList()
-            // Key 빼고 value collection 받아와서 List로 변경
+            }
         emit(sortedAndGroupedList)
     }
 }

@@ -17,42 +17,45 @@ class FakeListDataSource : ListDataSource {
         )
     }
 
-    override fun getProduct(): Flow<List<List<Product>>> = flow {
+    override fun getProductWithCategory(): Flow<Map<String, List<Product>>> = flow {
         emit(
-            listOf(
-                listOf(
-                    Product(
-                        "pork01",
-                        "pork",
-                        "삼겹살",
-                        19800,
-                        "https://android-test.yookgak.com/static/JeongyookgakLogo.png",
-                        0
-                    ),
+            mapOf(
+                Pair(
+                    "pork",
+                    listOf(
+                        Product(
+                            "pork01",
+                            "pork",
+                            "삼겹살",
+                            19800,
+                            "https://android-test.yookgak.com/static/JeongyookgakLogo.png",
+                            0
+                        ),
 
-                    Product(
-                        "pork02",
-                        "pork",
-                        "목살",
-                        18600,
-                        "https://android-test.yookgak.com/static/JeongyookgakLogo.png",
-                        1
-                    ),
-                    Product(
-                        "pork03",
-                        "pork",
-                        "항정살",
-                        19800,
-                        "https://android-test.yookgak.com/static/JeongyookgakLogo.png",
-                        2
-                    ),
-                    Product(
-                        "pork04",
-                        "pork",
-                        "등갈비",
-                        19800,
-                        "https://android-test.yookgak.com/static/JeongyookgakLogo.png",
-                        3
+                        Product(
+                            "pork02",
+                            "pork",
+                            "목살",
+                            18600,
+                            "https://android-test.yookgak.com/static/JeongyookgakLogo.png",
+                            1
+                        ),
+                        Product(
+                            "pork03",
+                            "pork",
+                            "항정살",
+                            19800,
+                            "https://android-test.yookgak.com/static/JeongyookgakLogo.png",
+                            2
+                        ),
+                        Product(
+                            "pork04",
+                            "pork",
+                            "등갈비",
+                            19800,
+                            "https://android-test.yookgak.com/static/JeongyookgakLogo.png",
+                            3
+                        )
                     )
                 )
             )
