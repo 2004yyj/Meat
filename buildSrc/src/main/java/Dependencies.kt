@@ -11,6 +11,7 @@ object Dependencies {
         const val androidJunit = "1.1.3"
         const val espresso = "3.4.0"
         const val navigation = "2.5.2"
+        const val retrofit = "2.9.0"
     }
 
     object Androidx {
@@ -24,6 +25,10 @@ object Dependencies {
         const val lifecycleViewModel = "androidx.lifecycle:lifecycle-viewmodel-compose:${Version.lifecycle}"
     }
 
+    object Network {
+        const val retrofit = "com.squareup.retrofit2:retrofit:${Version.retrofit}"
+        const val gsonConverter = "com.squareup.retrofit2:converter-gson:${Version.retrofit}"
+    }
 
     object Coroutines {
         const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Version.coroutines}"
