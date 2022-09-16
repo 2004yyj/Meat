@@ -15,6 +15,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.File
 
+@OptIn(ExperimentalCoroutinesApi::class)
 class ListServiceTest {
     private lateinit var mockWebServer: MockWebServer
     private lateinit var listService: ListService
@@ -29,7 +30,6 @@ class ListServiceTest {
             .create(ListService::class.java)
     }
 
-    @OptIn(ExperimentalCoroutinesApi::class)
     @Test
     fun 리스트_가져오기() = runTest {
         val jsonFile = File("src/test/java/com/example/meat/data/resource/list.json").readText()

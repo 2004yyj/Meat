@@ -5,12 +5,14 @@ import com.example.meat.domain.model.Category
 import com.example.meat.domain.model.Product
 import com.example.meat.domain.repository.ListRepository
 import junit.framework.Assert
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
 
+@OptIn(ExperimentalCoroutinesApi::class)
 class ListRepositoryTest {
     private lateinit var listDataSource: FakeListDataSource
     private lateinit var listRepository: ListRepository
