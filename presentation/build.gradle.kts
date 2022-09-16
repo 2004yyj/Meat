@@ -69,6 +69,10 @@ dependencies {
     implementation(Dependencies.DaggerHilt.android)
     implementation(Dependencies.DaggerHilt.compiler)
 
+    //coroutines
+    implementation(Dependencies.Coroutines.core)
+    implementation(Dependencies.Coroutines.test)
+
     testImplementation(Dependencies.Test.junit)
     androidTestImplementation(Dependencies.Test.androidJunit)
     androidTestImplementation(Dependencies.Test.espresso)

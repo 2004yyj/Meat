@@ -5,6 +5,7 @@ object Dependencies {
         const val compose = "1.2.1"
         const val composeUi = "1.2.1"
         const val lifecycle = "2.5.1"
+        const val coroutines = "1.6.4"
         const val composeActivity = "1.5.0"
         const val junit = "4.13.2"
         const val androidJunit = "1.1.3"
@@ -21,6 +22,12 @@ object Dependencies {
         const val composeActivity = "androidx.activity:activity-compose:${Version.composeActivity}"
         const val lifecycle = "androidx.lifecycle:lifecycle-runtime-ktx:${Version.lifecycle}"
         const val lifecycleViewModel = "androidx.lifecycle:lifecycle-viewmodel-compose:${Version.lifecycle}"
+    }
+
+
+    object Coroutines {
+        const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Version.coroutines}"
+        const val test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Version.coroutines}"
     }
 
     object Test {

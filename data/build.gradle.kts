@@ -34,4 +34,8 @@ android {
 dependencies {
     implementation(project(Dependencies.Project.domain))
     testImplementation(Dependencies.Test.junit)
+
+    //coroutines
+    implementation(Dependencies.Coroutines.core)
+    implementation(Dependencies.Coroutines.test)
 }
