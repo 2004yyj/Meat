@@ -4,6 +4,7 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.meat.data.entity.FavoriteData
 import com.example.meat.data.local.dao.FavoriteDao
+import com.example.meat.data.paging.FakeFavoritePagingSource
 import junit.runner.Version.id
 
 class FakeFavoriteDao: FavoriteDao {
@@ -48,22 +49,5 @@ class FakeFavoriteDao: FavoriteDao {
     override fun searchFavorite(query: String): PagingSource<Int, FavoriteData> {
         val queriedList = list.filter { it.name.contains(query) }
         return FakeFavoritePagingSource(queriedList)
-    }
-}
-
-class FakeFavoritePagingSource(
-    private val list: List<FavoriteData>
-) : PagingSource<Int, FavoriteData>() {
-    override fun getRefreshKey(state: PagingState<Int, FavoriteData>): Int? {
-        return state.anchorPosition?.let { anchorPosition ->
-            state.closestItemToPosition(anchorPosition)?.id?.toInt()
-        }
-    }
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, FavoriteData> {
-        return LoadResult.Page(
-            data = list,
-            prevKey = null,
-            nextKey = null
-        )
     }
 }
