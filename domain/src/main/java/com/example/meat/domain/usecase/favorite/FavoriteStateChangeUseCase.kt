@@ -3,7 +3,7 @@ package com.example.meat.domain.usecase.favorite
 import com.example.meat.domain.model.Product
 import com.example.meat.domain.repository.FavoriteRepository
 
-class FavoriteUseCase(
+class FavoriteStateChangeUseCase(
     private val favoriteRepository: FavoriteRepository
 ) {
     suspend operator fun invoke(product: Product) {
