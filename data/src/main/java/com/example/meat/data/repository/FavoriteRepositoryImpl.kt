@@ -21,6 +21,10 @@ class FavoriteRepositoryImpl(
         return dataSource.isExistsFavorite(key)
     }
 
+    override fun getAllFavorite(): Flow<List<Product>> {
+        return dataSource.getAllFavorite()
+    }
+
     override fun searchFavorite(): Flow<PagingData<Product>> {
         return dataSource.searchFavorite()
     }

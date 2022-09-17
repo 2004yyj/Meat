@@ -8,6 +8,7 @@ interface FavoriteRepository {
     suspend fun insertFavorite(product: Product): Long
     suspend fun deleteFavorite(key: String)
     suspend fun isExistsFavorite(key: String): Boolean
+    fun getAllFavorite(): Flow<List<Product>>
     fun searchFavorite(): Flow<PagingData<Product>>
     fun searchFavorite(query: String): Flow<PagingData<Product>>
 }
