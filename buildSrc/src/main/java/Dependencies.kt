@@ -1,5 +1,8 @@
 object Dependencies {
     object Version {
+        const val room = "2.5.0-alpha03"
+        const val paging = "3.1.1"
+        const val pagingCompose = "1.0.0-alpha10"
         const val coil = "2.2.1"
         const val pager = "0.26.3-beta"
         const val hiltViewModel = "1.0.0"
@@ -26,12 +29,23 @@ object Dependencies {
         const val composeActivity = "androidx.activity:activity-compose:${Version.composeActivity}"
         const val lifecycle = "androidx.lifecycle:lifecycle-runtime-ktx:${Version.lifecycle}"
         const val lifecycleViewModel = "androidx.lifecycle:lifecycle-viewmodel-compose:${Version.lifecycle}"
+        const val pagingCompose = "androidx.paging:paging-compose:${Version.pagingCompose}"
+        const val pagingCommon = "androidx.paging:paging-common:${Version.paging}"
+        const val pagingCommonKtx = "androidx.paging:paging-common-ktx:${Version.paging}"
     }
 
     object Network {
         const val retrofit = "com.squareup.retrofit2:retrofit:${Version.retrofit}"
         const val gsonConverter = "com.squareup.retrofit2:converter-gson:${Version.retrofit}"
         const val mockWebServer =  "com.squareup.okhttp3:mockwebserver:${Version.mockWebServer}"
+    }
+
+    object Database {
+        const val room = "androidx.room:room-runtime:${Version.room}"
+        const val roomKtx = "androidx.room:room-ktx:${Version.room}"
+        const val roomCompiler = "androidx.room:room-compiler:${Version.room}"
+        const val roomTest = "androidx.room:room-testing:${Version.room}"
+        const val roomPaging = "androidx.room:room-paging:${Version.room}"
     }
 
     object Coroutines {

@@ -84,6 +84,13 @@ dependencies {
     implementation(Dependencies.Accompanist.pager)
     implementation(Dependencies.Accompanist.pagerIndicator)
 
+    //paging
+    implementation(Dependencies.Androidx.pagingCompose)
+
+    //room
+    implementation(Dependencies.Database.room)
+    implementation(Dependencies.Database.roomCompiler)
+
     //coil
     implementation(Dependencies.Image.coil)
 
