@@ -37,7 +37,7 @@ class FavoriteDaoTest {
 
     @Test
     fun 좋아요_추가하기() = runTest {
-        val expected = listOf(1L)
+        val expected = 1L
         val actual =
             favoriteDao.insertFavorite(
                 FavoriteData(
@@ -101,18 +101,10 @@ class FavoriteDaoTest {
             "https://android-test.yookgak.com/static/JeongyookgakLogo.png",
             0
         )
-        val data2 = FavoriteData(
-            "pork02",
-            "pork",
-            "목살",
-            19800,
-            "https://android-test.yookgak.com/static/JeongyookgakLogo.png",
-            0
-        )
-        favoriteDao.insertFavorite(data1, data2)
+        favoriteDao.insertFavorite(data1)
 
         val expected = PagingSource.LoadResult.Page(
-            data = listOf(data1, data2),
+            data = listOf(data1),
             prevKey = null,
             nextKey = null,
             itemsAfter = 0,
