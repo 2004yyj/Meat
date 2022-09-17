@@ -17,7 +17,7 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-fun Product(
+fun List(
     viewModel: ProductViewModel = hiltViewModel()
 ) {
     viewModel.getCategory()
