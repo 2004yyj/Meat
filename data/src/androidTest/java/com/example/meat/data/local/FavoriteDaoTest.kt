@@ -120,4 +120,32 @@ class FavoriteDaoTest {
             )
         assertEquals(expected, actual)
     }
+
+    @Test
+    fun 모든_좋아요_가져오기() = runTest {
+        favoriteDao.insertFavorite(
+            FavoriteData(
+                "pork01",
+                "pork",
+                "삼겹살",
+                19800,
+                "https://android-test.yookgak.com/static/JeongyookgakLogo.png",
+                0
+            )
+        )
+
+        val expected = listOf(
+            FavoriteData(
+                "pork01",
+                "pork",
+                "삼겹살",
+                19800,
+                "https://android-test.yookgak.com/static/JeongyookgakLogo.png",
+                0
+            )
+        )
+        val actual = favoriteDao.getAllFavorite()
+
+        assertEquals(expected, actual)
+    }
 }

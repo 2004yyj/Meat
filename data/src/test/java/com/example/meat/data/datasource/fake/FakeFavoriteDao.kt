@@ -1,11 +1,9 @@
 package com.example.meat.data.datasource.fake
 
 import androidx.paging.PagingSource
-import androidx.paging.PagingState
 import com.example.meat.data.entity.FavoriteData
 import com.example.meat.data.local.dao.FavoriteDao
 import com.example.meat.data.paging.FakeFavoritePagingSource
-import junit.runner.Version.id
 
 class FakeFavoriteDao: FavoriteDao {
     private val list = arrayListOf(
@@ -40,6 +38,10 @@ class FakeFavoriteDao: FavoriteDao {
 
     override suspend fun isExistsFavorite(key: String): Boolean {
         return list.any { it.key == key }
+    }
+
+    override fun getAllFavorite(): List<FavoriteData> {
+        return list
     }
 
     override fun searchFavorite(): PagingSource<Int, FavoriteData> {

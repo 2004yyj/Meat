@@ -18,6 +18,9 @@ interface FavoriteDao {
     suspend fun isExistsFavorite(key: String): Boolean
 
     @Query("SELECT * FROM favorite")
+    fun getAllFavorite(): List<FavoriteData>
+
+    @Query("SELECT * FROM favorite")
     fun searchFavorite(): PagingSource<Int, FavoriteData>
 
     @Query("SELECT * FROM favorite WHERE name LIKE :query")
