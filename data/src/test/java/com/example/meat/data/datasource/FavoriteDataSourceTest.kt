@@ -122,4 +122,35 @@ class FavoriteDataSourceTest {
         assertEquals(expected, actual)
         testJob.cancel()
     }
+
+    @Test
+    fun 모든_좋아요_가져오기() = runTest {
+        val expected = listOf(
+            Product(
+                "pork01",
+                "pork",
+                "삼겹살",
+                19800,
+                "https://android-test.yookgak.com/static/JeongyookgakLogo.png",
+                0
+            ),
+            Product(
+                "pork02",
+                "pork",
+                "목살",
+                19800,
+                "https://android-test.yookgak.com/static/JeongyookgakLogo.png",
+                0
+            )
+        )
+        var actual: List<Product>? = null
+        val testJob = launch(UnconfinedTestDispatcher()) {
+            favoriteDataSource.getAllFavorite().collect {
+                actual = it
+            }
+        }
+
+        assertEquals(expected, actual)
+        testJob.cancel()
+    }
 }

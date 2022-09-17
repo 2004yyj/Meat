@@ -26,6 +26,10 @@ class FavoriteDataSourceImpl(
         return dao.isExistsFavorite(key)
     }
 
+    override fun getAllFavorite(): Flow<List<Product>> = flow {
+        emit(dao.getAllFavorite().map { it.toModel() })
+    }
+
     override fun searchFavorite(): Flow<PagingData<Product>> =
         Pager(PagingConfig(10)) { dao.searchFavorite() }.flow.map {
             it.map { favoriteData -> favoriteData.toModel() }

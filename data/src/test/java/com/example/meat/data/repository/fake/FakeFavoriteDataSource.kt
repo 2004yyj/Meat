@@ -42,6 +42,10 @@ class FakeFavoriteDataSource : FavoriteDataSource {
         return list.any { it.key == key }
     }
 
+    override fun getAllFavorite(): Flow<List<Product>> = flow {
+        emit(list)
+    }
+
     override fun searchFavorite(): Flow<PagingData<Product>> = flow {
         emit(PagingData.from(list))
     }
