@@ -23,6 +23,11 @@ android {
             )
         }
     }
+    packagingOptions {
+        resources {
+            excludes += "/META-INF/gradle/incremental.annotation.processors"
+        }
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -36,6 +41,8 @@ dependencies {
     implementation(project(Dependencies.Project.domain))
     testImplementation(Dependencies.Test.junit)
     androidTestImplementation(Dependencies.Test.androidJunit)
+    androidTestImplementation(Dependencies.Test.androidTestCore)
+    androidTestImplementation(Dependencies.Test.androidTestRules)
 
     //retrofit
     implementation(Dependencies.Network.retrofit)
@@ -47,7 +54,7 @@ dependencies {
     implementation(Dependencies.Database.roomKtx)
     kapt(Dependencies.Database.roomCompiler)
     implementation(Dependencies.Database.roomPaging)
-    testImplementation(Dependencies.Database.roomTest)
+    androidTestImplementation(Dependencies.Database.roomTest)
 
     //coroutines
     implementation(Dependencies.Coroutines.core)

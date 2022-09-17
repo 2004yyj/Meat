@@ -93,11 +93,4 @@ dependencies {
 
     //coil
     implementation(Dependencies.Image.coil)
-
-    testImplementation(Dependencies.Test.junit)
-    androidTestImplementation(Dependencies.Test.androidJunit)
-    androidTestImplementation(Dependencies.Test.espresso)
-    androidTestImplementation(Dependencies.Test.composeUiJunit)
-    debugImplementation(Dependencies.Test.composeUiTooling)
-    debugImplementation(Dependencies.Test.composeUiTest)
 }
