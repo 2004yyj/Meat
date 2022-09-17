@@ -9,3 +9,7 @@ fun Home(
 ) {
     Text("Home")
 }
+
+enum class HomeTabs {
+    List, Favorite
+}
