@@ -60,6 +60,9 @@ dependencies {
     implementation(Dependencies.Coroutines.core)
     implementation(Dependencies.Coroutines.test)
 
+    //paging
+    testImplementation (Dependencies.Androidx.pagingRuntime)
+
     //hilt
     implementation(Dependencies.DaggerHilt.compiler)
 }

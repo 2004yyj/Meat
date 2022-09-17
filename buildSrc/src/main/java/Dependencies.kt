@@ -33,6 +33,7 @@ object Dependencies {
         const val pagingCompose = "androidx.paging:paging-compose:${Version.pagingCompose}"
         const val pagingCommon = "androidx.paging:paging-common:${Version.paging}"
         const val pagingCommonKtx = "androidx.paging:paging-common-ktx:${Version.paging}"
+        const val pagingRuntime = "androidx.paging:paging-runtime:${Version.paging}"
     }
 
     object Network {
