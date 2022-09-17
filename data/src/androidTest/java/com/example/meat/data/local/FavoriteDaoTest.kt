@@ -92,7 +92,7 @@ class FavoriteDaoTest {
     }
 
     @Test
-    fun 좋아요_추가_및_리스트_가져오기() = runTest {
+    fun 좋아요_추가_및_좋아요_페이징_리스트_가져오기() = runTest {
         val data1 = FavoriteData(
             "pork01",
             "pork",

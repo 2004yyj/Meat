@@ -85,7 +85,7 @@ class FavoriteDataSourceTest {
     }
 
     @Test
-    fun 리스트_가져오기() = runTest {
+    fun 좋아요_페이징_리스트_가져오기() = runTest {
         Dispatchers.setMain(UnconfinedTestDispatcher())
         val differ = AsyncPagingDataDiffer(
             diffCallback = TestCallback<Product>(),

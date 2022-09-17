@@ -2,11 +2,8 @@ package com.example.meat.data.repository
 
 import androidx.paging.AsyncPagingDataDiffer
 import com.example.meat.data.datasource.FavoriteDataSource
-import com.example.meat.data.datasource.fake.FakeFavoriteDao
 import com.example.meat.data.local.TestCallback
 import com.example.meat.data.local.TestUpdateCallback
-import com.example.meat.data.local.dao.FavoriteDao
-import com.example.meat.data.local.datasource.FavoriteDataSourceImpl
 import com.example.meat.data.repository.fake.FakeFavoriteDataSource
 import com.example.meat.domain.model.Product
 import com.example.meat.domain.repository.FavoriteRepository
@@ -88,7 +85,7 @@ class FavoriteRepositoryTest {
     }
 
     @Test
-    fun 리스트_가져오기() = runTest {
+    fun 좋아요_페이징_리스트_가져오기() = runTest {
         Dispatchers.setMain(UnconfinedTestDispatcher())
         val differ = AsyncPagingDataDiffer(
             diffCallback = TestCallback<Product>(),
