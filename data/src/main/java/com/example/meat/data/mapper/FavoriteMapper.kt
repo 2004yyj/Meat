@@ -6,7 +6,9 @@ import com.example.meat.domain.model.Product
 fun FavoriteData.toModel(): Product {
     return Product(
         key, categoryKey, name, price, thumbnail, order
-    )
+    ).apply {
+        favorite = true
+    }
 }
 
 fun Product.toFavoriteEntity(): FavoriteData {
