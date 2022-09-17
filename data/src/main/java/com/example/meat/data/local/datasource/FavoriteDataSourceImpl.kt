@@ -10,8 +10,9 @@ import com.example.meat.domain.model.Product
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
+import javax.inject.Inject
 
-class FavoriteDataSourceImpl(
+class FavoriteDataSourceImpl @Inject constructor(
     private val dao: FavoriteDao
 ): FavoriteDataSource {
     override suspend fun insertFavorite(product: Product): Long {

@@ -5,8 +5,9 @@ import com.example.meat.data.datasource.FavoriteDataSource
 import com.example.meat.domain.model.Product
 import com.example.meat.domain.repository.FavoriteRepository
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
-class FavoriteRepositoryImpl(
+class FavoriteRepositoryImpl @Inject constructor(
     private val dataSource: FavoriteDataSource
 ): FavoriteRepository {
     override suspend fun insertFavorite(product: Product): Long {
