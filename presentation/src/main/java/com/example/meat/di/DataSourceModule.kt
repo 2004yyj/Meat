@@ -1,5 +1,6 @@
 package com.example.meat.di
 
+import com.example.meat.data.datasource.FavoriteDataSource
 import com.example.meat.data.datasource.ListDataSource
 import com.example.meat.data.local.datasource.FavoriteDataSourceImpl
 import com.example.meat.data.remote.datasource.ListDataSourceImpl
@@ -15,5 +16,5 @@ abstract class DataSourceModule {
     abstract fun bindsListDataSource(dataSource: ListDataSourceImpl): ListDataSource
 
     @Binds
-    abstract fun bindsFavoriteDataSource(dataSource: FavoriteDataSourceImpl): FavoriteDataSourceImpl
+    abstract fun bindsFavoriteDataSource(dataSource: FavoriteDataSourceImpl): FavoriteDataSource
 }
