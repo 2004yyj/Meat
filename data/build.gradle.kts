@@ -34,4 +34,16 @@ android {
 dependencies {
     implementation(project(Dependencies.Project.domain))
     testImplementation(Dependencies.Test.junit)
+
+    //retrofit
+    implementation(Dependencies.Network.retrofit)
+    implementation(Dependencies.Network.gsonConverter)
+    implementation(Dependencies.Network.mockWebServer)
+
+    //coroutines
+    implementation(Dependencies.Coroutines.core)
+    implementation(Dependencies.Coroutines.test)
+
+    //hilt
+    implementation(Dependencies.DaggerHilt.compiler)
 }

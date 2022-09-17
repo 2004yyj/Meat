@@ -1,4 +1,6 @@
 plugins {
+    id ("kotlin-kapt")
+    id ("kotlin-android")
     id ("com.android.application")
     id ("org.jetbrains.kotlin.android")
     id ("com.google.dagger.hilt.android")
@@ -44,7 +46,8 @@ android {
     }
     packagingOptions {
         resources {
-            excludes += setOf("/META-INF/{AL2.0,LGPL2.1}")
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+            excludes += "/META-INF/gradle/incremental.annotation.processors"
         }
     }
 }
@@ -64,9 +67,25 @@ dependencies {
     //navigation
     implementation(Dependencies.Androidx.navigation)
 
-    //Hilt
+    //hilt
     implementation(Dependencies.DaggerHilt.android)
-    implementation(Dependencies.DaggerHilt.compiler)
+    kapt(Dependencies.DaggerHilt.compiler)
+    implementation(Dependencies.DaggerHilt.hiltViewModel)
+
+    //coroutines
+    implementation(Dependencies.Coroutines.core)
+    implementation(Dependencies.Coroutines.test)
+
+    //retrofit
+    implementation(Dependencies.Network.retrofit)
+    implementation(Dependencies.Network.gsonConverter)
+
+    //accompanist
+    implementation(Dependencies.Accompanist.pager)
+    implementation(Dependencies.Accompanist.pagerIndicator)
+
+    //coil
+    implementation(Dependencies.Image.coil)
 
     testImplementation(Dependencies.Test.junit)
     androidTestImplementation(Dependencies.Test.androidJunit)
