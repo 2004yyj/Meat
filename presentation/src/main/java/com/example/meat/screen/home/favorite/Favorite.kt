@@ -45,7 +45,10 @@ fun Favorite(
                 item?.let {
                     ProductItem(
                         modifier = Modifier.padding(10.dp),
-                        product = item
+                        product = item,
+                        onClickFavorite = {
+                            viewModel.favoriteStateChange(it)
+                        }
                     )
                     if (index == product.itemCount - 1 && index != 0) {
                         Spacer(modifier = Modifier.height(10.dp))
