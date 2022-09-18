@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.meat.components.checkbox.HeartCheckbox
 import com.example.meat.domain.model.Product
 import com.example.meat.drawable.DrawableResources
@@ -25,6 +26,7 @@ import com.example.meat.drawable.DrawableResources
 fun Detail(
     product: Product,
     onNavigationClick: () -> Unit,
+    viewModel: DetailViewModel = hiltViewModel()
 ) {
     var checked by remember { mutableStateOf(product.favorite) }
 
@@ -78,7 +80,7 @@ fun Detail(
                     checked = checked,
                     onCheckedChange = {
                         checked = it
-                        viewModel
+                        viewModel.favoriteStateChange(product)
                     },
                     modifier = Modifier
                         .padding(top = 10.dp)
