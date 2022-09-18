@@ -1,5 +1,7 @@
 package com.example.meat.screen.home
 
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.*
 import androidx.compose.runtime.*
@@ -36,12 +38,14 @@ fun Home(
             }
         }
     ) {
-        when(currentTab) {
-            HomeTabs.List -> {
-                List()
-            }
-            HomeTabs.Favorite -> {
-                Favorite()
+        Box (modifier = Modifier.padding(it)) {
+            when (currentTab) {
+                HomeTabs.List -> {
+                    List()
+                }
+                HomeTabs.Favorite -> {
+                    Favorite()
+                }
             }
         }
     }
