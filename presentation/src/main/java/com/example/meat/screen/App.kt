@@ -55,7 +55,14 @@ fun App(
                         val key = getString("key")
                         val name = getString("name")
                         val price = getInt("price")
-                        Detail(key!!, name!!, price)
+                        Detail(
+                            key = key!!,
+                            name = name!!,
+                            price = price,
+                            onNavigationClick = {
+                                appState.popBackStack()
+                            }
+                        )
                     }
                 }
             }
