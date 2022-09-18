@@ -9,6 +9,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -17,13 +18,13 @@ class ListViewModel @Inject constructor(
     private val getProductUseCase: GetProductUseCase,
     private val favoriteStateChangeUseCase: FavoriteStateChangeUseCase
 ): ViewModel() {
-    private val _product: MutableStateFlow<Map<String, List<Product>>> = MutableStateFlow(emptyMap())
-    val product = _product.asStateFlow()
+    private val _uiState: MutableStateFlow<ListUiState> = MutableStateFlow(ListUiState.Loading)
+    val uiState = _uiState.asStateFlow()
 
     fun getProduct() {
         viewModelScope.launch {
             getProductUseCase().collect {
-                _product.emit(it)
+                _uiState.emit(ListUiState.Success(it))
             }
         }
     }
