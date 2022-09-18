@@ -1,12 +1,16 @@
 package com.example.meat.screen.home.list
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.meat.domain.model.Category
 import com.example.meat.domain.model.Product
+import com.example.meat.domain.usecase.favorite.FavoriteStateChangeUseCase
 import com.example.meat.domain.usecase.list.GetCategoryUseCase
-import com.example.meat.domain.usecase.list.GetProductWithCategoryUseCase
+import com.example.meat.domain.usecase.list.GetProductUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
@@ -15,7 +19,8 @@ import javax.inject.Inject
 @HiltViewModel
 class ProductViewModel @Inject constructor(
     private val getCategoryUseCase: GetCategoryUseCase,
-    private val getProductWithCategoryUseCase: GetProductWithCategoryUseCase
+    private val getProductUseCase: GetProductUseCase,
+    private val favoriteStateChangeUseCase: FavoriteStateChangeUseCase
 ): ViewModel() {
     private val _category = MutableStateFlow(emptyList<Category>())
     val category = _category.asStateFlow()
@@ -34,9 +39,15 @@ class ProductViewModel @Inject constructor(
 
     fun getProduct() {
         viewModelScope.launch {
-            getProductWithCategoryUseCase().collect {
+            getProductUseCase().collect {
                 _product.emit(it)
             }
+        }
+    }
+
+    fun favoriteStateChange(product: Product) {
+        viewModelScope.launch(Dispatchers.IO) {
+            favoriteStateChangeUseCase(product)
         }
     }
 }

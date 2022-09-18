@@ -58,7 +58,10 @@ fun List(
                 state = pagerState
             ) { page ->
                 products[categories[page].key]?.let {
-                    ProductByCategory(product = it)
+                    ProductByCategory(
+                        product = it,
+                        onClickFavorite = viewModel::favoriteStateChange
+                    )
                 }
             }
         }

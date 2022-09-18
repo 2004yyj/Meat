@@ -14,7 +14,8 @@ import com.example.meat.screen.home.item.ProductItem
 
 @Composable
 fun ProductByCategory(
-    product: List<Product>
+    product: List<Product>,
+    onClickFavorite: (Product) -> Unit
 ) {
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
@@ -23,7 +24,10 @@ fun ProductByCategory(
         items(product.size, { product[it].key }) { index: Int ->
             ProductItem(
                 modifier = Modifier.padding(10.dp),
-                product = product[index]
+                product = product[index],
+                onClickFavorite = {
+                    onClickFavorite(it)
+                }
             )
             if (index == product.size - 1) {
                 Spacer(modifier = Modifier.height(10.dp))
