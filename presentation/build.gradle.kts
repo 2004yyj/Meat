@@ -89,7 +89,7 @@ dependencies {
 
     //room
     implementation(Dependencies.Database.room)
-    implementation(Dependencies.Database.roomCompiler)
+    kapt(Dependencies.Database.roomCompiler)
 
     //coil
     implementation(Dependencies.Image.coil)

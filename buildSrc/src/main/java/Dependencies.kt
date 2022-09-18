@@ -1,9 +1,10 @@
 object Dependencies {
     object Version {
+        const val roomPaging = "2.5.0-alpha03"
         const val androidTest = "1.4.0"
         const val room = "2.5.0-alpha03"
         const val paging = "3.1.1"
-        const val pagingCompose = "1.0.0-alpha10"
+        const val pagingCompose = "1.0.0-alpha16"
         const val coil = "2.2.1"
         const val pager = "0.26.3-beta"
         const val hiltViewModel = "1.0.0"
@@ -47,7 +48,7 @@ object Dependencies {
         const val roomKtx = "androidx.room:room-ktx:${Version.room}"
         const val roomCompiler = "androidx.room:room-compiler:${Version.room}"
         const val roomTest = "androidx.room:room-testing:${Version.room}"
-        const val roomPaging = "androidx.room:room-paging:${Version.room}"
+        const val roomPaging = "androidx.room:room-paging:${Version.roomPaging}"
     }
 
     object Coroutines {
@@ -60,10 +61,6 @@ object Dependencies {
         const val androidTestCore = "androidx.test:core:${Version.androidTest}"
         const val androidTestRules = "androidx.test:rules:${Version.androidTest}"
         const val androidJunit = "androidx.test.ext:junit:${Version.androidJunit}"
-        const val composeUiJunit = "androidx.compose.ui:ui-test-junit4:${Version.compose}"
-        const val espresso = "androidx.test.espresso:espresso-core:${Version.espresso}"
-        const val composeUiTooling = "androidx.compose.ui:ui-tooling:${Version.compose}"
-        const val composeUiTest = "androidx.compose.ui:ui-test-manifest:${Version.compose}"
     }
 
     object Project {

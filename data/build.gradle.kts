@@ -61,6 +61,7 @@ dependencies {
     implementation(Dependencies.Coroutines.test)
 
     //paging
+    implementation (Dependencies.Androidx.pagingRuntime)
     testImplementation (Dependencies.Androidx.pagingRuntime)
 
     //hilt
