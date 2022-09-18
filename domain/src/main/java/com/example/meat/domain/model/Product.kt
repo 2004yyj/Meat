@@ -6,7 +6,7 @@ data class Product(
     val name: String,
     val price: Int,
     val thumbnail: String,
-    val order: Int
+    val order: Int,
+    var favorite: Boolean = false
 ) {
-    var favorite = false
 }
