@@ -1,0 +1,53 @@
+{
+  "categories": [
+    {
+      "key": "pork",
+      "name": "돼지",
+      "order": 0
+    },
+    {
+      "key": "beef",
+      "name": "소",
+      "order": 1
+    },
+    {
+      "key": "chicken",
+      "name": "닭",
+      "order": 2
+    }
+  ],
+  "productions": [
+    {
+      "key": "pork01",
+      "category_key": "pork",
+      "name": "삼겹살",
+      "price": 19800,
+      "thumbnail": "https://android-test.yookgak.com/static/JeongyookgakLogo.png",
+      "order": 0
+    },
+    {
+      "key": "pork02",
+      "category_key": "pork",
+      "name": "목살",
+      "price": 18600,
+      "thumbnail": "https://android-test.yookgak.com/static/JeongyookgakLogo.png",
+      "order": 1
+    },
+    {
+      "key": "pork03",
+      "category_key": "pork",
+      "name": "항정살",
+      "price": 19800,
+      "thumbnail": "https://android-test.yookgak.com/static/JeongyookgakLogo.png",
+      "order": 2
+    },
+    {
+      "key": "pork04",
+      "category_key": "pork",
+      "name": "등갈비",
+      "price": 19800,
+      "thumbnail": "https://android-test.yookgak.com/static/JeongyookgakLogo.png",
+      "order": 3
+    }
+  ]
+}

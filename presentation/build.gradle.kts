@@ -1,6 +1,9 @@
 plugins {
+    id ("kotlin-kapt")
+    id ("kotlin-android")
     id ("com.android.application")
     id ("org.jetbrains.kotlin.android")
+    id ("com.google.dagger.hilt.android")
 }
 
 android {
@@ -39,11 +42,12 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = Dependencies.Version.compose
+        kotlinCompilerExtensionVersion = "1.3.1"
     }
     packagingOptions {
         resources {
-            excludes += setOf("/META-INF/{AL2.0,LGPL2.1}")
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+            excludes += "/META-INF/gradle/incremental.annotation.processors"
         }
     }
 }
@@ -58,10 +62,36 @@ dependencies {
     implementation (Dependencies.Androidx.composeActivity)
     implementation(Dependencies.Androidx.composeUiToolingPreview)
     implementation(Dependencies.Androidx.lifecycle)
-    testImplementation(Dependencies.Test.junit)
-    androidTestImplementation(Dependencies.Test.androidJunit)
-    androidTestImplementation(Dependencies.Test.espresso)
-    androidTestImplementation(Dependencies.Test.composeJunit)
-    debugImplementation(Dependencies.Test.composeUiTooling)
-    debugImplementation(Dependencies.Test.composeUiTest)
+    implementation(Dependencies.Androidx.lifecycleViewModel)
+
+    //navigation
+    implementation(Dependencies.Androidx.navigation)
+
+    //hilt
+    implementation(Dependencies.DaggerHilt.android)
+    kapt(Dependencies.DaggerHilt.compiler)
+    implementation(Dependencies.DaggerHilt.hiltViewModel)
+
+    //coroutines
+    implementation(Dependencies.Coroutines.core)
+    implementation(Dependencies.Coroutines.test)
+
+    //retrofit
+    implementation(Dependencies.Network.retrofit)
+    implementation(Dependencies.Network.gsonConverter)
+
+    //accompanist
+    implementation(Dependencies.Accompanist.pager)
+    implementation(Dependencies.Accompanist.pagerIndicator)
+    implementation(Dependencies.Accompanist.swipeRefresh)
+
+    //paging
+    implementation(Dependencies.Androidx.pagingCompose)
+
+    //room
+    implementation(Dependencies.Database.room)
+    kapt(Dependencies.Database.roomCompiler)
+
+    //coil
+    implementation(Dependencies.Image.coil)
 }
