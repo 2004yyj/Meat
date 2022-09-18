@@ -11,26 +11,64 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.meat.components.loading.LoadingPage
 import com.example.meat.domain.model.Product
 import com.example.meat.screen.home.list.category.ProductByCategory
 import com.google.accompanist.pager.*
+import com.google.accompanist.swiperefresh.SwipeRefresh
+import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalPagerApi::class)
 @Composable
 fun List(
     viewModel: ListViewModel = hiltViewModel(),
     onClickProduct: (Product) -> Unit
 ) {
-    viewModel.getCategory()
-    viewModel.getProduct()
+    val uiState by viewModel.uiState.collectAsState()
+    var isRefreshing by remember { mutableStateOf(false) }
 
-    val coroutineScope = rememberCoroutineScope()
-    val categories by viewModel.category.collectAsState()
-    val products by viewModel.product.collectAsState()
+    LaunchedEffect(Unit) {
+        //최초 한 번만 실행
+        viewModel.getProduct()
+    }
+
+    when (uiState) {
+        is ListUiState.Loading -> LoadingPage()
+        is ListUiState.Success -> {
+            isRefreshing = false
+            ListSuccess(
+                products = (uiState as ListUiState.Success).value,
+                refresh = isRefreshing,
+                onRefresh = {
+                    isRefreshing = true
+                    viewModel.getProduct()
+                },
+                onClickProduct = onClickProduct,
+                onClickFavorite = viewModel::favoriteStateChange,
+
+            )
+        }
+    }
+}
+
+@OptIn(ExperimentalPagerApi::class)
+@Composable
+fun ListSuccess(
+    products: Map<String, List<Product>>,
+    refresh: Boolean,
+    onRefresh: () -> Unit,
+    onClickFavorite: (Product) -> Unit,
+    onClickProduct: (Product) -> Unit,
+) {
     val pagerState = rememberPagerState()
+    val coroutineScope = rememberCoroutineScope()
+    val categoryNames = products.keys.toList()
+    val swipeRefreshState = rememberSwipeRefreshState(refresh)
 
-    if (categories.isNotEmpty() && products.isNotEmpty()) {
+    SwipeRefresh(
+        state = swipeRefreshState,
+        onRefresh = onRefresh
+    ) {
         Column(modifier = Modifier.fillMaxSize()) {
             ScrollableTabRow(
                 edgePadding = 0.dp,
@@ -42,9 +80,9 @@ fun List(
                     )
                 }
             ) {
-                categories.forEachIndexed { index, category ->
+                categoryNames.forEachIndexed { index, categoryName ->
                     Tab(
-                        text = { Text(text = category.name) },
+                        text = { Text(text = categoryName) },
                         selected = pagerState.currentPage == index,
                         onClick = {
                             coroutineScope.launch {
@@ -56,14 +94,14 @@ fun List(
             }
 
             HorizontalPager(
-                count = categories.size,
+                count = categoryNames.size,
                 state = pagerState
             ) { page ->
-                products[categories[page].key]?.let {
+                products[categoryNames[page]]?.let {
                     ProductByCategory(
                         product = it,
                         onClickProduct = onClickProduct,
-                        onClickFavorite = viewModel::favoriteStateChange
+                        onClickFavorite = onClickFavorite
                     )
                 }
             }

@@ -8,16 +8,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class FakeListDataSource : ListDataSource {
-    override fun getCategory(): Flow<List<Category>> = flow {
-        emit(
-            listOf(
-                Category("pork", "돼지", 0),
-                Category("beef", "소", 1),
-                Category("chicken", "닭", 2)
-            )
-        )
-    }
-
     override fun getList(): Flow<ListModel> = flow {
         emit(
             ListModel(

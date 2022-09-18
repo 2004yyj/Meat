@@ -26,23 +26,6 @@ class ListRepositoryTest {
     }
 
     @Test
-    fun 카테고리_가져오기() = runTest {
-        val expected = listOf(
-            Category("pork", "돼지", 0),
-            Category("beef", "소", 1),
-            Category("chicken", "닭", 2)
-        )
-        var actual: List<Category>? = null
-        val testJob = launch(UnconfinedTestDispatcher()) {
-            listRepository.getCategory().collect {
-                actual = it
-            }
-        }
-        Assert.assertEquals(expected, actual)
-        testJob.cancel()
-    }
-
-    @Test
     fun 리스트_가져오기() = runTest {
         val expected = ListModel(
             categories = listOf(

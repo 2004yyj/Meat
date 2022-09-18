@@ -10,10 +10,6 @@ import javax.inject.Inject
 class ListRepositoryImpl @Inject constructor(
     private val dataSource: ListDataSource
 ): ListRepository {
-    override fun getCategory(): Flow<List<Category>> {
-        return dataSource.getCategory()
-    }
-
     override fun getList(): Flow<ListModel> {
         return dataSource.getList()
     }

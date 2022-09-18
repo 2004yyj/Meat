@@ -20,8 +20,8 @@ class GetProductUseCase(
                     // 카테고리 Order별로 Sort
                     list.categories.find { category -> category.key == it.categoryKey }?.order
                 }.groupBy {
-                    // 카테고리 Key별로 Grouping
-                    it.categoryKey
+                    // 카테고리 Name별로 Grouping
+                    list.categories.find { category -> category.key == it.categoryKey }?.name?:""
                 }
             sortedAndGroupedList
         }

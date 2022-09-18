@@ -83,6 +83,7 @@ dependencies {
     //accompanist
     implementation(Dependencies.Accompanist.pager)
     implementation(Dependencies.Accompanist.pagerIndicator)
+    implementation(Dependencies.Accompanist.swipeRefresh)
 
     //paging
     implementation(Dependencies.Androidx.pagingCompose)
