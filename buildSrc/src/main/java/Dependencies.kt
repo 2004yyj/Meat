@@ -6,7 +6,7 @@ object Dependencies {
         const val paging = "3.1.1"
         const val pagingCompose = "1.0.0-alpha16"
         const val coil = "2.2.1"
-        const val pager = "0.26.3-beta"
+        const val accompanist = "0.26.3-beta"
         const val hiltViewModel = "1.0.0"
         const val mockWebServer = "4.10.0"
         const val hilt = "2.43.2"
@@ -76,8 +76,9 @@ object Dependencies {
     }
 
     object Accompanist {
-        const val pager = "com.google.accompanist:accompanist-pager:${Version.pager}"
-        const val pagerIndicator = "com.google.accompanist:accompanist-pager-indicators:${Version.pager}"
+        const val pager = "com.google.accompanist:accompanist-pager:${Version.accompanist}"
+        const val pagerIndicator = "com.google.accompanist:accompanist-pager-indicators:${Version.accompanist}"
+        const val swipeRefresh = "com.google.accompanist:accompanist-swiperefresh:${Version.accompanist}"
     }
 
     object Image {
