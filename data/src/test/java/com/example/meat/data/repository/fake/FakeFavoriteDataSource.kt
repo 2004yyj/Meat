@@ -2,7 +2,6 @@ package com.example.meat.data.repository.fake
 
 import androidx.paging.PagingData
 import com.example.meat.data.datasource.FavoriteDataSource
-import com.example.meat.data.entity.FavoriteData
 import com.example.meat.domain.model.Product
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

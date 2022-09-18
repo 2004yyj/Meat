@@ -15,6 +15,7 @@ import com.example.meat.screen.home.item.ProductItem
 @Composable
 fun ProductByCategory(
     product: List<Product>,
+    onClickProduct: (Product) -> Unit,
     onClickFavorite: (Product) -> Unit
 ) {
     LazyColumn(
@@ -25,6 +26,7 @@ fun ProductByCategory(
             ProductItem(
                 modifier = Modifier.padding(10.dp),
                 product = product[index],
+                onClick = onClickProduct,
                 onClickFavorite = {
                     onClickFavorite(it)
                 }

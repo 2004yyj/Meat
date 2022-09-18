@@ -8,13 +8,14 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.example.meat.domain.model.Product
 import com.example.meat.drawable.DrawableResources
 import com.example.meat.screen.home.favorite.Favorite
 import com.example.meat.screen.home.list.List
 
 @Composable
 fun Home(
-    navigateToDetail: (name: String) -> Unit
+    navigateToDetail: (Product) -> Unit
 ) {
     var currentTab by remember { mutableStateOf(HomeTabs.List) }
 
@@ -41,10 +42,10 @@ fun Home(
         Box (modifier = Modifier.padding(it)) {
             when (currentTab) {
                 HomeTabs.List -> {
-                    List()
+                    List(onClickProduct = navigateToDetail)
                 }
                 HomeTabs.Favorite -> {
-                    Favorite()
+                    Favorite(onClickProduct = navigateToDetail)
                 }
             }
         }

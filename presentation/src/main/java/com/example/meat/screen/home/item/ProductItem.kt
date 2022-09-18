@@ -1,5 +1,6 @@
 package com.example.meat.screen.home.item
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
@@ -30,6 +31,7 @@ fun ProductItem(
 
     Row(
         modifier = modifier
+            .clickable { onClick(product) }
             .fillMaxWidth()
             .height(ItemSize)
     ) {
