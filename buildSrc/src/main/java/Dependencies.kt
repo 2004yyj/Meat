@@ -1,5 +1,10 @@
 object Dependencies {
     object Version {
+        const val roomPaging = "2.5.0-alpha03"
+        const val androidTest = "1.4.0"
+        const val room = "2.5.0-alpha03"
+        const val paging = "3.1.1"
+        const val pagingCompose = "1.0.0-alpha16"
         const val coil = "2.2.1"
         const val pager = "0.26.3-beta"
         const val hiltViewModel = "1.0.0"
@@ -26,12 +31,24 @@ object Dependencies {
         const val composeActivity = "androidx.activity:activity-compose:${Version.composeActivity}"
         const val lifecycle = "androidx.lifecycle:lifecycle-runtime-ktx:${Version.lifecycle}"
         const val lifecycleViewModel = "androidx.lifecycle:lifecycle-viewmodel-compose:${Version.lifecycle}"
+        const val pagingCompose = "androidx.paging:paging-compose:${Version.pagingCompose}"
+        const val pagingCommon = "androidx.paging:paging-common:${Version.paging}"
+        const val pagingCommonKtx = "androidx.paging:paging-common-ktx:${Version.paging}"
+        const val pagingRuntime = "androidx.paging:paging-runtime:${Version.paging}"
     }
 
     object Network {
         const val retrofit = "com.squareup.retrofit2:retrofit:${Version.retrofit}"
         const val gsonConverter = "com.squareup.retrofit2:converter-gson:${Version.retrofit}"
         const val mockWebServer =  "com.squareup.okhttp3:mockwebserver:${Version.mockWebServer}"
+    }
+
+    object Database {
+        const val room = "androidx.room:room-runtime:${Version.room}"
+        const val roomKtx = "androidx.room:room-ktx:${Version.room}"
+        const val roomCompiler = "androidx.room:room-compiler:${Version.room}"
+        const val roomTest = "androidx.room:room-testing:${Version.room}"
+        const val roomPaging = "androidx.room:room-paging:${Version.roomPaging}"
     }
 
     object Coroutines {
@@ -41,11 +58,9 @@ object Dependencies {
 
     object Test {
         const val junit = "junit:junit:${Version.junit}"
+        const val androidTestCore = "androidx.test:core:${Version.androidTest}"
+        const val androidTestRules = "androidx.test:rules:${Version.androidTest}"
         const val androidJunit = "androidx.test.ext:junit:${Version.androidJunit}"
-        const val composeUiJunit = "androidx.compose.ui:ui-test-junit4:${Version.compose}"
-        const val espresso = "androidx.test.espresso:espresso-core:${Version.espresso}"
-        const val composeUiTooling = "androidx.compose.ui:ui-tooling:${Version.compose}"
-        const val composeUiTest = "androidx.compose.ui:ui-test-manifest:${Version.compose}"
     }
 
     object Project {

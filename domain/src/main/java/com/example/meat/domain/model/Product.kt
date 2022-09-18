@@ -7,4 +7,6 @@ data class Product(
     val price: Int,
     val thumbnail: String,
     val order: Int
-)
+) {
+    var favorite = false
+}

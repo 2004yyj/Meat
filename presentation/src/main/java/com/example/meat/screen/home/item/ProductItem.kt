@@ -17,8 +17,17 @@ fun ProductItem(
     modifier: Modifier = Modifier,
     product: Product,
     onClick: (Product) -> Unit = {},
+    onClickFavorite: (Product) -> Unit = {}
 ) {
-    var checked by remember { mutableStateOf(false) }
+    var checked by remember { mutableStateOf(product.favorite) }
+
+    LaunchedEffect(product) {
+        // 리스트 아이템 변경 시 Product의 데이터만 변경되고
+        // State는 변경된 데이터가 적용되지 않아서
+        // 내부 데이터가 변화할 때 State도 업데이트 하기 위한 코드
+        checked = product.favorite
+    }
+
     Row(
         modifier = modifier
             .fillMaxWidth()
@@ -50,7 +59,10 @@ fun ProductItem(
             HeartCheckbox(
                 modifier = Modifier.align(Alignment.CenterEnd),
                 checked = checked,
-                onCheckedChange = { checked = it }
+                onCheckedChange = {
+                    checked = it
+                    onClickFavorite(product)
+                },
             )
         }
     }
