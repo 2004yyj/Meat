@@ -23,6 +23,6 @@ interface FavoriteDao {
     @Query("SELECT * FROM favorite")
     fun searchFavorite(): PagingSource<Int, FavoriteData>
 
-    @Query("SELECT * FROM favorite WHERE name LIKE :query")
+    @Query("SELECT * FROM favorite WHERE name LIKE '%' || :query || '%'")
     fun searchFavorite(query: String): PagingSource<Int, FavoriteData>
 }
