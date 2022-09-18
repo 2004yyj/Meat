@@ -14,21 +14,19 @@ import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.VerticalAlignmentLine
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
 import com.example.meat.components.checkbox.HeartCheckbox
+import com.example.meat.domain.model.Product
 import com.example.meat.drawable.DrawableResources
 
 @Composable
 fun Detail(
-    key: String,
-    name: String,
-    price: Int,
+    product: Product,
     onNavigationClick: () -> Unit,
 ) {
-    var checked by remember { mutableStateOf(false) }
+    var checked by remember { mutableStateOf(product.favorite) }
 
     Scaffold(
         topBar = {
@@ -67,12 +65,12 @@ fun Detail(
                     .padding(10.dp)
             ) {
                 Text(
-                    text = name,
+                    text = product.name,
                     modifier = Modifier
                         .align(Alignment.CenterHorizontally)
                 )
                 Text(
-                    text = "${price}원",
+                    text = "${product.price}원",
                     modifier = Modifier
                         .align(Alignment.CenterHorizontally)
                 )
@@ -80,6 +78,7 @@ fun Detail(
                     checked = checked,
                     onCheckedChange = {
                         checked = it
+                        viewModel
                     },
                     modifier = Modifier
                         .padding(top = 10.dp)

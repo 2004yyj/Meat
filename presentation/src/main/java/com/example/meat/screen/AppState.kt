@@ -5,15 +5,22 @@ import androidx.compose.runtime.remember
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.rememberNavController
 import com.example.meat.domain.model.Product
 
 sealed class Screen(val route: String) {
     object Home: Screen("home")
-    object Detail: Screen("detail/{key}?name={name}?price={price}") {
+    object Detail: Screen("detail/{key}?name={name}?price={price}?categoryKey={categoryKey}?thumbnail={thumbnail}?order={order}?favorite={favorite}") {
         fun createDetail(
             product: Product
-        ) = "detail/${product.key}?name=${product.name}?price=${product.price}"
+        ) = "detail/${product.key}?" +
+                "name=${product.name}?" +
+                "price=${product.price}?" +
+                "categoryKey=${product.categoryKey}?" +
+                "thumbnail=${product.thumbnail}?" +
+                "order=${product.order}?" +
+                "favorite=${product.favorite}"
     }
 }
 
