@@ -17,7 +17,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ProductViewModel @Inject constructor(
+class ListViewModel @Inject constructor(
     private val getCategoryUseCase: GetCategoryUseCase,
     private val getProductUseCase: GetProductUseCase,
     private val favoriteStateChangeUseCase: FavoriteStateChangeUseCase
