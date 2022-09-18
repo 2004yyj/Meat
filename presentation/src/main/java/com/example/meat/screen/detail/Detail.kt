@@ -2,6 +2,7 @@ package com.example.meat.screen.detail
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Icon
 import androidx.compose.material.Scaffold
@@ -23,4 +24,31 @@ fun Detail(
     price: Int,
     onNavigationClick: () -> Unit
 ) {
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                navigationIcon = {
+                    Icon(
+                        contentDescription = "backButton",
+                        painter = painterResource(DrawableResources.ArrowBack.id),
+                        modifier = Modifier
+                            .padding(horizontal = 10.dp)
+                            .clickable(
+                                role = Role.Button,
+                                interactionSource = remember { MutableInteractionSource() },
+                                indication = rememberRipple(
+                                    bounded = false,
+                                    radius = 24.dp,
+                                ),
+                                onClick = onNavigationClick
+                            ),
+                    )
+                },
+                title = {
+                    Text(text = "상품상세")
+                }
+            )
+        }
+    ) {
+    }
 }
