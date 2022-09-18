@@ -1,8 +1,9 @@
 package com.example.meat.di.usecase
 
+import com.example.meat.domain.repository.FavoriteRepository
 import com.example.meat.domain.repository.ListRepository
 import com.example.meat.domain.usecase.list.GetCategoryUseCase
-import com.example.meat.domain.usecase.list.GetProductWithCategoryUseCase
+import com.example.meat.domain.usecase.list.GetProductUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,7 +18,10 @@ object ListUseCaseModule {
     }
 
     @Provides
-    fun providesGetProductUseCase(listRepository: ListRepository): GetProductWithCategoryUseCase {
-        return GetProductWithCategoryUseCase(listRepository)
+    fun providesGetProductUseCase(
+        listRepository: ListRepository,
+        favoriteRepository: FavoriteRepository
+    ): GetProductUseCase {
+        return GetProductUseCase(listRepository, favoriteRepository)
     }
 }

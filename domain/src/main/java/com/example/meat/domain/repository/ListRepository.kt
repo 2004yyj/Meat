@@ -7,5 +7,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface ListRepository {
     fun getCategory(): Flow<List<Category>>
-    fun getProductWithCategory(): Flow<Map<String, List<Product>>>
+    fun getList(): Flow<ListModel>
 }
