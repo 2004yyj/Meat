@@ -5,11 +5,9 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.meat.screen.detail.Detail
 import com.example.meat.screen.home.Home
@@ -34,6 +32,7 @@ fun App(
                 ) { navBackStackEntry ->
                     Home(
                         navigateToDetail = {
+                            appState.replaceToDetail(it, navBackStackEntry)
                         }
                     )
                 }
@@ -41,12 +40,23 @@ fun App(
                 composable(
                     route = Screen.Detail.route,
                     arguments = listOf(
+                        navArgument("key") {
+                            type = NavType.StringType
+                        },
                         navArgument("name") {
                             type = NavType.StringType
+                        },
+                        navArgument("price") {
+                            type = NavType.IntType
                         }
                     )
-                ) {
-                    Detail()
+                ) { navBackStackEntry ->
+                    navBackStackEntry.arguments?.apply {
+                        val key = getString("key")
+                        val name = getString("name")
+                        val price = getInt("price")
+                        Detail(key!!, name!!, price)
+                    }
                 }
             }
         }

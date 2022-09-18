@@ -4,6 +4,10 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 
 @Composable
-fun Detail() {
+fun Detail(
+    key: String,
+    name: String,
+    price: Int
+) {
     Text("Detail")
 }

@@ -1,17 +1,19 @@
 package com.example.meat.screen
 
-import android.net.Uri
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.example.meat.domain.model.Product
 
 sealed class Screen(val route: String) {
     object Home: Screen("home")
-    object Detail: Screen("detail/{name}") {
-        fun createDetail(name: String) = "detail/$name"
+    object Detail: Screen("detail/{key}?name={name}?price={price}") {
+        fun createDetail(
+            product: Product
+        ) = "detail/${product.key}?name=${product.name}?price=${product.price}"
     }
 }
 
@@ -25,10 +27,9 @@ fun rememberAppState(
 class AppState(
     val navController: NavHostController
 ) {
-    fun replaceToDetail(name: String, from: NavBackStackEntry) {
+    fun replaceToDetail(product: Product, from: NavBackStackEntry) {
         if (from.isLifecycleResumed()) {
-            val encodedUri = Uri.encode(name)
-            navController.navigate(Screen.Detail.createDetail(encodedUri))
+            navController.navigate(Screen.Detail.createDetail(product))
         }
     }
 
