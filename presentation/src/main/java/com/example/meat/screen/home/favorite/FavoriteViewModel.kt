@@ -3,6 +3,7 @@ package com.example.meat.screen.home.favorite
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.example.meat.domain.model.Product
 import com.example.meat.domain.usecase.favorite.SearchFavoriteUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -20,9 +21,11 @@ class FavoriteViewModel @Inject constructor(
 
     fun searchFavorite(query: String) {
         viewModelScope.launch {
-            searchFavoriteUseCase(query).collect {
-                _product.emit(it)
-            }
+            searchFavoriteUseCase(query)
+                .cachedIn(viewModelScope)
+                .collect {
+                    _product.emit(it)
+                }
         }
     }
 }
