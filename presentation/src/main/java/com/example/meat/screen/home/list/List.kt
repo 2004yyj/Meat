@@ -11,6 +11,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.meat.components.loading.LoadingPage
 import com.example.meat.domain.model.Product
 import com.example.meat.screen.home.list.category.ProductByCategory
 import com.google.accompanist.pager.*
@@ -29,7 +30,7 @@ fun List(
     }
 
     when (uiState) {
-        is ListUiState.Loading -> {}
+        is ListUiState.Loading -> LoadingPage()
         is ListUiState.Success -> {
             ListSuccess(
                 products = (uiState as ListUiState.Success).value,
