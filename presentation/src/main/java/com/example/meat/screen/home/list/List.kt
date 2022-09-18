@@ -11,6 +11,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.meat.domain.model.Category
 import com.example.meat.domain.model.Product
 import com.example.meat.screen.home.list.category.ProductByCategory
 import com.google.accompanist.pager.*
@@ -27,8 +28,13 @@ fun List(
     val coroutineScope = rememberCoroutineScope()
     val products by viewModel.product.collectAsState()
     val pagerState = rememberPagerState()
+    var categoryNames: List<String> by remember { mutableStateOf(emptyList()) }
 
-    if (categories.isNotEmpty() && products.isNotEmpty()) {
+    LaunchedEffect(products) {
+        categoryNames = products.keys.toList()
+    }
+
+    if (products.isNotEmpty()) {
         Column(modifier = Modifier.fillMaxSize()) {
             ScrollableTabRow(
                 edgePadding = 0.dp,
@@ -40,9 +46,9 @@ fun List(
                     )
                 }
             ) {
-                categories.forEachIndexed { index, category ->
+                categoryNames.forEachIndexed { index, categoryName ->
                     Tab(
-                        text = { Text(text = category.name) },
+                        text = { Text(text = categoryName) },
                         selected = pagerState.currentPage == index,
                         onClick = {
                             coroutineScope.launch {
@@ -54,10 +60,10 @@ fun List(
             }
 
             HorizontalPager(
-                count = categories.size,
+                count = categoryNames.size,
                 state = pagerState
             ) { page ->
-                products[categories[page].key]?.let {
+                products[categoryNames[page]]?.let {
                     ProductByCategory(
                         product = it,
                         onClickProduct = onClickProduct,
