@@ -6,6 +6,5 @@ import com.example.meat.domain.model.Product
 import kotlinx.coroutines.flow.Flow
 
 interface ListRepository {
-    fun getCategory(): Flow<List<Category>>
     fun getList(): Flow<ListModel>
 }

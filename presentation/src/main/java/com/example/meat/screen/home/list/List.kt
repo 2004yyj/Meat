@@ -22,11 +22,9 @@ fun List(
     viewModel: ListViewModel = hiltViewModel(),
     onClickProduct: (Product) -> Unit
 ) {
-    viewModel.getCategory()
     viewModel.getProduct()
 
     val coroutineScope = rememberCoroutineScope()
-    val categories by viewModel.category.collectAsState()
     val products by viewModel.product.collectAsState()
     val pagerState = rememberPagerState()
 

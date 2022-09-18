@@ -14,10 +14,6 @@ import javax.inject.Inject
 class ListDataSourceImpl @Inject constructor(
     private val service: ListService
 ): ListDataSource, BaseRemote() {
-    override fun getCategory(): Flow<List<Category>> = flow {
-        emit(getResponse(service.getList()).toModel().categories)
-    }
-
     override fun getList(): Flow<ListModel> = flow {
         emit(getResponse(service.getList()).toModel())
     }
