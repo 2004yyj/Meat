@@ -34,7 +34,6 @@ fun App(
                 ) { navBackStackEntry ->
                     Home(
                         navigateToDetail = {
-                            appState.replaceToDetail(it, navBackStackEntry)
                         }
                     )
                 }

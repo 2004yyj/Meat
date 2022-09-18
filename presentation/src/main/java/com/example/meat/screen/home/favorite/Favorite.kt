@@ -10,11 +10,13 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemsIndexed
+import com.example.meat.domain.model.Product
 import com.example.meat.screen.home.item.ProductItem
 
 @Composable
 fun Favorite(
-    viewModel: FavoriteViewModel = hiltViewModel()
+    viewModel: FavoriteViewModel = hiltViewModel(),
+    onClickProduct: (Product) -> Unit
 ) {
     var query by remember { mutableStateOf("") }
     val product = viewModel.product.collectAsLazyPagingItems()
@@ -46,6 +48,7 @@ fun Favorite(
                     ProductItem(
                         modifier = Modifier.padding(10.dp),
                         product = item,
+                        onClick = onClickProduct,
                         onClickFavorite = {
                             viewModel.favoriteStateChange(it)
                         }

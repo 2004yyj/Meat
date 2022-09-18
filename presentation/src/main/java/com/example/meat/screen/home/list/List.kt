@@ -11,6 +11,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.meat.domain.model.Product
 import com.example.meat.screen.home.list.category.ProductByCategory
 import com.google.accompanist.pager.*
 import kotlinx.coroutines.launch
@@ -18,7 +19,8 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalPagerApi::class)
 @Composable
 fun List(
-    viewModel: ListViewModel = hiltViewModel()
+    viewModel: ListViewModel = hiltViewModel(),
+    onClickProduct: (Product) -> Unit
 ) {
     viewModel.getCategory()
     viewModel.getProduct()
@@ -60,6 +62,7 @@ fun List(
                 products[categories[page].key]?.let {
                     ProductByCategory(
                         product = it,
+                        onClickProduct = onClickProduct,
                         onClickFavorite = viewModel::favoriteStateChange
                     )
                 }
